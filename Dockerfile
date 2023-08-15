@@ -25,8 +25,8 @@ RUN apt update && apt install -y python3.10 python3.10-dev curl
 ### For Havoc client
 RUN git clone https://github.com/HavocFramework/Havoc.git
 # Compile
-RUN cd Havoc/Client && make
-RUN cd /opt/Havoc/Teamserver/ && ./Install.sh
+RUN cd Havoc/client && make
+RUN cd /opt/Havoc/teamserver/ && ./Install.sh
 
 ### Install Go
 RUN rm -rf /usr/bin/go
@@ -37,7 +37,7 @@ RUN echo "export GOPATH=＄HOME/work" >> ~/.profile
 RUN echo "export PATH=＄PATH:/usr/local/go/bin:＄GOPATH/bin" >> ~/.profile
 RUN ln -s /usr/local/go/bin/go /usr/bin/go
 
-### Install Havoc Teamserver
+### Install Havoc teamserver
 RUN apt update \
 	&& apt -y install \
 	alien \
@@ -56,8 +56,8 @@ RUN apt update \
 	upx-ucl \
 	net-tools \
 	&& pip install --upgrade jsonschema
-RUN cd Havoc/Teamserver && go mod download golang.org/x/sys && go mod download github.com/ugorji/go
-RUN cd Havoc/Teamserver && make
+RUN cd Havoc/teamserver && go mod download golang.org/x/sys && go mod download github.com/ugorji/go
+RUN cd Havoc/teamserver && make
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh

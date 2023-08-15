@@ -26,9 +26,6 @@ RUN apt update
 RUN apt install curl -y
 ### For Havoc client
 RUN git clone https://github.com/HavocFramework/Havoc.git
-# Compile
-RUN cd Havoc/client && make
-RUN cd /opt/Havoc/teamserver/ && ./Install.sh
 
 ### Install Go
 RUN rm -rf /usr/bin/go
@@ -39,24 +36,6 @@ RUN echo "export GOPATH=＄HOME/work" >> ~/.profile
 RUN echo "export PATH=＄PATH:/usr/local/go/bin:＄GOPATH/bin" >> ~/.profile
 RUN ln -s /usr/local/go/bin/go /usr/bin/go
 
-### Install Havoc teamserver
-RUN apt update \
-	&& apt -y install \
-	alien \
-	debhelper \
-	devscripts \
-	nasm \
-	mingw-w64 \
-	dh-golang \
-	dh-make \
-	fakeroot \
-	pkg-config \
-	python3-all-dev \
-	python3-pip \
-	rpm \
-	sudo \
-	net-tools \
-	&& pip install --upgrade jsonschema
 RUN cd Havoc/teamserver && go mod download golang.org/x/sys && go mod download github.com/ugorji/go
 RUN cd Havoc/ && make ts-build
 RUN cd Havoc/ && make client-build

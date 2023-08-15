@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM debian
 
 ### Set time zone
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC
@@ -6,10 +6,7 @@ RUN apt update && apt-get -y install tzdata
 ENV QT_QPA_PLATFORM=offscreen
 
 ### Install prerequisite
-RUN apt update && apt-get install -y pkg-config build-essential libmariadb-dev-compat
-RUN apt update && apt install -y git apt-utils cmake libfontconfig1 libglu1-mesa-dev libgtest-dev libspdlog-dev libboost-all-dev libncurses5-dev libgdbm-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev mesa-common-dev qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libqt5websockets5 libqt5websockets5-dev qtdeclarative5-dev golang-go qtbase5-dev libqt5websockets5-dev libspdlog-dev python3-dev libboost-all-dev mingw-w64 nasm git wget vim
-### For debian package
-RUN apt update && apt install -y python3-dev libpython3-dev software-properties-common
+RUN apt update && sudo apt install -y git build-essential apt-utils cmake libfontconfig1 libglu1-mesa-dev libgtest-dev libspdlog-dev libboost-all-dev libncurses5-dev libgdbm-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev libbz2-dev mesa-common-dev qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools libqt5websockets5 libqt5websockets5-dev qtdeclarative5-dev golang-go qtbase5-dev libqt5websockets5-dev python3-dev libboost-all-dev mingw-w64 nasm
 
 WORKDIR /opt
 ### For python10
@@ -20,7 +17,11 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 871920D1991BC93C
 #COPY repo /etc/apt/sources.list.d/deadsnakes-ubuntu-ppa-lunar.list 
 #RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys F23C5A6CF475977595C89F51BA6932366A755776
-RUN apt update && apt install -y python3.10 python3.10-dev curl
+### For debian package
+RUN echo 'deb http://ftp.de.debian.org/debian bookworm main' >> /etc/apt/sources.list
+RUN sudo apt update
+RUN sudo apt install python3-dev python3.10-dev libpython3.10 libpython3.10-dev python3.10
+
 
 ### For Havoc client
 RUN git clone https://github.com/HavocFramework/Havoc.git

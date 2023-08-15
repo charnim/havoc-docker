@@ -10,9 +10,9 @@ RUN apt update && apt install -y git build-essential apt-utils cmake libfontconf
 
 WORKDIR /opt
 ### For python10
-#RUN wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
-#RUN tar xzvf Python-3.10.0.tgz && cd Python-3.10.0 && ./configure  --enable-optimizations && make -j 4 && make install
-#RUN rm Python-3.10.0.tgz
+RUN wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
+RUN tar xzvf Python-3.10.0.tgz && cd Python-3.10.0 && ./configure  --enable-optimizations && make -j 4 && make install
+RUN rm Python-3.10.0.tgz
 #RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 871920D1991BC93C
 #COPY repo /etc/apt/sources.list.d/deadsnakes-ubuntu-ppa-lunar.list 
@@ -20,7 +20,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 871920D1991BC93C
 ### For debian package
 RUN echo 'deb http://ftp.de.debian.org/debian bookworm main' >> /etc/apt/sources.list
 RUN apt update
-RUN apt install python3-dev python3.10-dev libpython3.10 libpython3.10-dev python3.10
+#RUN apt install python3-dev python3.10-dev libpython3.10 libpython3.10-dev python3.10
 
 
 ### For Havoc client

@@ -13,7 +13,7 @@ WORKDIR /opt
 #RUN wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
 #RUN tar xzvf Python-3.10.0.tgz && cd Python-3.10.0 && ./configure  --enable-optimizations && make -j 4 && make install
 #RUN rm Python-3.10.0.tgz
-RUN add-apt-repository ppa:deadsnakes/ppa
+#RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 871920D1991BC93C
 #COPY repo /etc/apt/sources.list.d/deadsnakes-ubuntu-ppa-lunar.list 
 #RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys F23C5A6CF475977595C89F51BA6932366A755776

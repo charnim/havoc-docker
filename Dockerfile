@@ -23,7 +23,7 @@ RUN echo 'deb http://ftp.de.debian.org/debian bookworm main' >> /etc/apt/sources
 RUN apt update
 #RUN apt install python3-dev python3.10-dev libpython3.10 libpython3.10-dev python3.10
 
-RUN apt install curl sudo setcap -y
+RUN apt install curl sudo libcap2-bin -y
 
 ### For Havoc client
 RUN git clone https://github.com/HavocFramework/Havoc.git

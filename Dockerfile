@@ -57,7 +57,8 @@ RUN apt update \
 	net-tools \
 	&& pip install --upgrade jsonschema
 RUN cd Havoc/teamserver && go mod download golang.org/x/sys && go mod download github.com/ugorji/go
-RUN cd Havoc/teamserver && make
+RUN cd Havoc/ && make ts-build
+RUN cd Havoc/ && make client-build
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh

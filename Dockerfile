@@ -55,7 +55,6 @@ RUN apt update \
 	python3-pip \
 	rpm \
 	sudo \
-	upx-ucl \
 	net-tools \
 	&& pip install --upgrade jsonschema
 RUN cd Havoc/teamserver && go mod download golang.org/x/sys && go mod download github.com/ugorji/go

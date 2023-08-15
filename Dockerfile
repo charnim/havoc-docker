@@ -19,8 +19,8 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 871920D1991BC93C
 #RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys F23C5A6CF475977595C89F51BA6932366A755776
 ### For debian package
 RUN echo 'deb http://ftp.de.debian.org/debian bookworm main' >> /etc/apt/sources.list
-RUN sudo apt update
-RUN sudo apt install python3-dev python3.10-dev libpython3.10 libpython3.10-dev python3.10
+RUN apt update
+RUN apt install python3-dev python3.10-dev libpython3.10 libpython3.10-dev python3.10
 
 
 ### For Havoc client

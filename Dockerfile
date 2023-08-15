@@ -10,6 +10,7 @@ RUN apt update && apt install -y git build-essential apt-utils cmake libfontconf
 
 WORKDIR /opt
 ### For python10
+RUN apt install wget -y
 RUN wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz
 RUN tar xzvf Python-3.10.0.tgz && cd Python-3.10.0 && ./configure  --enable-optimizations && make -j 4 && make install
 RUN rm Python-3.10.0.tgz

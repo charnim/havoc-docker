@@ -24,6 +24,7 @@ RUN apt update
 #RUN apt install python3-dev python3.10-dev libpython3.10 libpython3.10-dev python3.10
 
 RUN apt install curl -y
+RUN apt install sudo -y
 ### For Havoc client
 RUN git clone https://github.com/HavocFramework/Havoc.git
 
